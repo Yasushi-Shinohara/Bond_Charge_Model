@@ -1,0 +1,93 @@
+&calculation
+  calc_mode = 'GS_RT'
+/
+
+&control
+  sysname = 'SiO2'
+/
+
+&units
+  unit_system = 'a.u.'
+/
+
+&system
+  iperiodic = 3
+  al = 15.06935985d0, 8.70029896d0, 9.839803802699999d0
+  nstate = 96
+  nelec = 96
+  nelem = 2
+  natom = 18
+/
+
+&pseudo
+  izatom(1) = 14
+  pseudo_file(1) = '../../Si.fhi'
+  lloc_ps(1) = 2
+  izatom(2) = 8
+  pseudo_file(2) = '../../08-O.LDA.fhi'
+  lloc_ps(2) = 2
+/
+
+&functional
+  xc = 'TBmBJ'
+/
+
+&rgrid
+  num_rgrid = 40, 24, 24
+/
+
+&kgrid
+  num_kgrid = 2, 2, 2
+/
+
+&tgrid
+  nt = 300
+  dt = 0.05
+/
+
+&propagation
+  propagator = 'etrs'
+/
+
+&scf
+  ncg = 5
+  nscf = 200
+  omp_loop='b'
+/
+
+&emfield
+  trans_longi = 'tr'
+  ae_shape1 = 'Acos2'
+  rlaser_int_wcm2_1 = 1d14
+  pulse_tw1 = 441.195136248d0
+  omega1 = 0.05696145187d0
+  epdir_re1 = 0., 0., 1.
+/
+&atomic_red_coor
+  'Si' 0.2771     0.7229     0.33333333 1
+  'Si' 0.2229     0.2229     0.         1
+  'Si' 0.         0.5542     0.66666667 1
+  'O'  0.19755    0.89445    0.09213    2
+  'O'  0.30245    0.39445    0.24120333 2
+  'O'  0.15155    0.75645    0.57453667 2
+  'O'  0.454      0.8491     0.42546333 2
+  'O'  0.34845    0.25645    0.75879667 2
+  'O'  0.046      0.3491     0.90787    2
+  'Si' 0.7771     0.2229     0.33333333 1
+  'Si' 0.7229     0.7229     0.         1
+  'Si' 0.5        0.0542     0.66666667 1
+  'O'  0.69755    0.39445    0.09213    2
+  'O'  0.80245    0.89445    0.24120333 2
+  'O'  0.65155    0.25645    0.57453667 2
+  'O'  0.954      0.3491     0.42546333 2
+  'O'  0.84845    0.75645    0.75879667 2
+  'O'  0.546      0.8491     0.90787    2
+/
+&analysis
+  out_dos = 'y'
+/ Frequency max for Fouriter transform
+/ 27.21 eV is required, 27.21/(27.21 eV/Ha) = 1.0Ha (Ha = atomic unit)
+/ 1.0= nenergy x de
+  nenergy = 1000
+  de = 0.001
+/
